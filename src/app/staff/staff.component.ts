@@ -12,6 +12,8 @@ export class StaffComponent implements OnInit {
   totalRows: number;
   page: number = 1;
   searchText: string = '';
+  sortDirection: string = 'asc';
+  sortProperty: string = 'empNumber';
 
   constructor(private http: HttpClient) { }
 
@@ -29,10 +31,18 @@ export class StaffComponent implements OnInit {
     this.getStaff();
   }
 
+  onSortClicked(sortProperty: string){
+    this.sortProperty = sortProperty;
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.getStaff();
+  }
+
   getStaff(){
     const params = new HttpParams()
       .set('page', this.page.toString())
-      .set('searchText', this.searchText);
+      .set('searchText', this.searchText)
+      .set('sortProperty', this.sortProperty)
+      .set('sortDirection', this.sortDirection);
 
     this.http.get('http://localhost:50723/api/staff', {params : params})
     .subscribe(response => {

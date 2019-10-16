@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalRows;
   @Output() pageClickedEvent = new EventEmitter<number>();
-  pageSize: number = 5;
+  pageSize: number = 10;
   paginationArray: number[] = []
   pageCount: number;
 
