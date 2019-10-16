@@ -1,0 +1,23 @@
+<div class=form-group>
+    <input #searchText (input)="onSearchTextChange(searchText.value)" class="form-control" >
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Employee Number</th>
+            <th>Employee Name</th>
+            <th>Joined date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of staff">
+            <td>{{employee.EmployeeNumber}}</td>
+            <td>{{employee.Name}}</td>
+            <td>{{employee.DateEmploymentStarted}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<app-pagination [totalRows]="totalRows" (pageClickedEvent)="onPageClicked($event)"></app-pagination>
+

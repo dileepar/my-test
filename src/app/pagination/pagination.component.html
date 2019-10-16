@@ -1,0 +1,5 @@
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let i of paginationArray"><button (click)="onPageClick(i)" class="page-link">{{i}}</button></li>
+    </ul>
+</nav>
